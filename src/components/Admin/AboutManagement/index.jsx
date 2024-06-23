@@ -91,7 +91,9 @@ export const AboutManagement = () => {
 
   const fetchAboutData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/about");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/about"
+      );
       if (response.data.length > 0) {
         setAboutData(response.data[0]); // Assuming there's only one intro data
       }
@@ -110,11 +112,14 @@ export const AboutManagement = () => {
     try {
       if (aboutData._id) {
         await axios.patch(
-          `http://localhost:5002/about/update/${aboutData._id}`,
+          `https://portfolioserver-7.onrender.com/about/update/${aboutData._id}`,
           aboutData
         );
       } else {
-        await axios.post("http://localhost:5002/about/post", aboutData);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/about/post",
+          aboutData
+        );
       }
       // Refresh data after saving
       fetchAboutData();
@@ -125,7 +130,9 @@ export const AboutManagement = () => {
 
   const handleDeleteClick = async () => {
     try {
-      await axios.delete(`http://localhost:5002/about/delete/${aboutData._id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/about/delete/${aboutData._id}`
+      );
       // Clear data after deleting
       setAboutData({
         lottieUrl: "",

@@ -81,7 +81,9 @@ export const EducationManagement = () => {
 
   const fetchEducationData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/education");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/education"
+      );
       setEducationData(response.data);
     } catch (error) {
       console.error("Error fetching education data:", error);
@@ -99,12 +101,15 @@ export const EducationManagement = () => {
     try {
       if (editEducationId) {
         await axios.patch(
-          `http://localhost:5002/education/update/${editEducationId}`,
+          `https://portfolioserver-7.onrender.com/education/update/${editEducationId}`,
           newEducation
         );
         setEditEducationId(null);
       } else {
-        await axios.post("http://localhost:5002/education/post", newEducation);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/education/post",
+          newEducation
+        );
       }
       // Refresh data after saving or updating
       fetchEducationData();
@@ -125,7 +130,9 @@ export const EducationManagement = () => {
 
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:5002/education/delete/${id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/education/delete/${id}`
+      );
       // Refresh data after deletion
       fetchEducationData();
     } catch (error) {

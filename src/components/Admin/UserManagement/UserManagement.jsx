@@ -34,7 +34,9 @@ export function UserManagement() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/user");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/user"
+      );
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -48,7 +50,9 @@ export function UserManagement() {
 
   const handleDeleteClick = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5002/user/delete/${userId}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/user/delete/${userId}`
+      );
       fetchUsers();
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -64,7 +68,7 @@ export function UserManagement() {
     e.preventDefault();
     try {
       await axios.patch(
-        `http://localhost:5002/user/update/${editingUser}`,
+        `https://portfolioserver-7.onrender.com/user/update/${editingUser}`,
         formData
       );
       setEditingUser(null);

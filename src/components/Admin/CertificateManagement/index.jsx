@@ -80,7 +80,9 @@ export function CertificateManagement() {
 
   const fetchCertificateData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/certificates");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/certificates"
+      );
       setCertificates(response.data);
     } catch (error) {
       console.error("Error fetching certificate data:", error);
@@ -98,13 +100,13 @@ export function CertificateManagement() {
     try {
       if (editCertificateId) {
         await axios.patch(
-          `http://localhost:5002/certificates/update/${editCertificateId}`,
+          `https://portfolioserver-7.onrender.com/certificates/update/${editCertificateId}`,
           newCertificate
         );
         setEditCertificateId(null);
       } else {
         await axios.post(
-          "http://localhost:5002/certificates/post",
+          "https://portfolioserver-7.onrender.com/certificates/post",
           newCertificate
         );
       }
@@ -124,7 +126,9 @@ export function CertificateManagement() {
 
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:5002/certificates/delete/${id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/certificates/delete/${id}`
+      );
       fetchCertificateData();
     } catch (error) {
       console.error("Error deleting certificate data:", error);

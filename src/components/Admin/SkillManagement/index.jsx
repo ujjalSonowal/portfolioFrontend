@@ -16,7 +16,9 @@ export function SkillManagement() {
 
   const fetchSkills = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/skill");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/skill"
+      );
       setSkills(response.data);
     } catch (error) {
       console.error("Error fetching skills:", error);
@@ -30,7 +32,9 @@ export function SkillManagement() {
 
   const handleDeleteClick = async (skillId) => {
     try {
-      await axios.delete(`http://localhost:5002/skill/delete/${skillId}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/skill/delete/${skillId}`
+      );
       fetchSkills();
     } catch (error) {
       console.error("Error deleting skill:", error);
@@ -47,12 +51,15 @@ export function SkillManagement() {
     try {
       if (editingSkill) {
         await axios.patch(
-          `http://localhost:5002/skill/update/${editingSkill}`,
+          `https://portfolioserver-7.onrender.com/skill/update/${editingSkill}`,
           formData
         );
         setEditingSkill(null);
       } else {
-        await axios.post("http://localhost:5002/skill/post", formData);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/skill/post",
+          formData
+        );
       }
       setFormData({
         skill_name: "",

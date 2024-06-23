@@ -70,7 +70,9 @@ export const BlogManagement = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/blog");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/blog"
+      );
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blogs: ", error);
@@ -87,13 +89,16 @@ export const BlogManagement = () => {
     try {
       if (updateMode) {
         await axios.patch(
-          `http://localhost:5002/blog/update/${selectedBlogId}`,
+          `https://portfolioserver-7.onrender.com/blog/update/${selectedBlogId}`,
           formData
         );
         setUpdateMode(false);
         setSelectedBlogId(null);
       } else {
-        await axios.post("http://localhost:5002/blog/post", formData);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/blog/post",
+          formData
+        );
       }
       setFormData({ name: "", description: "", image: "" });
       fetchData(); // Refresh blogs after adding or updating
@@ -114,7 +119,9 @@ export const BlogManagement = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5002/blog/delete/${id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/blog/delete/${id}`
+      );
       fetchData(); // Refresh blogs after deletion
     } catch (error) {
       console.error("Error deleting blog: ", error);

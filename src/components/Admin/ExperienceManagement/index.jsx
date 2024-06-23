@@ -79,7 +79,9 @@ export function ExperienceManagement() {
 
   const fetchExperienceData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/experience");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/experience"
+      );
       setExperiences(response.data);
     } catch (error) {
       console.error("Error fetching experience data:", error);
@@ -97,13 +99,13 @@ export function ExperienceManagement() {
     try {
       if (editExperienceId) {
         await axios.patch(
-          `http://localhost:5002/experience/update/${editExperienceId}`,
+          `https://portfolioserver-7.onrender.com/experience/update/${editExperienceId}`,
           newExperience
         );
         setEditExperienceId(null);
       } else {
         await axios.post(
-          "http://localhost:5002/experience/post",
+          "https://portfolioserver-7.onrender.com/experience/post",
           newExperience
         );
       }
@@ -122,7 +124,9 @@ export function ExperienceManagement() {
 
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:5002/experience/delete/${id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/experience/delete/${id}`
+      );
       fetchExperienceData();
     } catch (error) {
       console.error("Error deleting experience data:", error);

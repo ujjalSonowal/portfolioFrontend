@@ -19,7 +19,9 @@ export function ProjectManagement() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/project");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/project"
+      );
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -33,7 +35,9 @@ export function ProjectManagement() {
 
   const handleDeleteClick = async (projectId) => {
     try {
-      await axios.delete(`http://localhost:5002/project/delete/${projectId}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/project/delete/${projectId}`
+      );
       fetchProjects();
     } catch (error) {
       console.error("Error deleting project:", error);
@@ -50,12 +54,15 @@ export function ProjectManagement() {
     try {
       if (editingProject) {
         await axios.patch(
-          `http://localhost:5002/project/update/${editingProject}`,
+          `https://portfolioserver-7.onrender.com/project/update/${editingProject}`,
           formData
         );
         setEditingProject(null);
       } else {
-        await axios.post("http://localhost:5002/project/post", formData);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/project/post",
+          formData
+        );
       }
       setFormData({
         title: "",

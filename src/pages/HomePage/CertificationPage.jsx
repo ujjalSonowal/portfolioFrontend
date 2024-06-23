@@ -31,7 +31,7 @@ export function CertificationPage() {
     async function fetchData() {
       try {
         const projectResponse = await axios.get(
-          "http://localhost:5002/certificates"
+          "https://portfolioserver-7.onrender.com/certificates"
         );
         setCertificate(projectResponse.data);
       } catch (error) {

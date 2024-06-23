@@ -34,7 +34,7 @@ export function Projectpage() {
     async function fetchData() {
       try {
         const projectResponse = await axios.get(
-          "http://localhost:5002/project"
+          "https://portfolioserver-7.onrender.com/project"
         );
         setProject(projectResponse.data);
       } catch (error) {

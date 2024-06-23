@@ -86,13 +86,16 @@ export const Login = () => {
     const auth = { email, password };
 
     try {
-      const response = await fetch(`http://localhost:5002/user/login`, {
-        method: "POST",
-        body: JSON.stringify(auth),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://portfolioserver-7.onrender.com/user/login`,
+        {
+          method: "POST",
+          body: JSON.stringify(auth),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       const json = await response.json();
 

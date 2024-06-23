@@ -8,7 +8,9 @@ export function AboutPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const aboutResponse = await axios.get("http://localhost:5002/about");
+        const aboutResponse = await axios.get(
+          "https://portfolioserver-7.onrender.com/about"
+        );
         setAbout(aboutResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);

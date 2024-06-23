@@ -319,24 +319,28 @@ export const HomePage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const introResponse = await axios.get("http://localhost:5002/intro");
+        const introResponse = await axios.get(
+          "https://portfolioserver-7.onrender.com/intro"
+        );
         setIntro(introResponse.data);
 
         const educationResponse = await axios.get(
-          "http://localhost:5002/education"
+          "https://portfolioserver-7.onrender.com/education"
         );
         setEducations(educationResponse.data);
 
         const experienceResponse = await axios.get(
-          "http://localhost:5002/experience"
+          "https://portfolioserver-7.onrender.com/experience"
         );
         setExperiences(experienceResponse.data);
 
-        const skillResponse = await axios.get("http://localhost:5002/skill");
+        const skillResponse = await axios.get(
+          "https://portfolioserver-7.onrender.com/skill"
+        );
         setSkill(skillResponse.data);
 
         const projectResponse = await axios.get(
-          "http://localhost:5002/project"
+          "https://portfolioserver-7.onrender.com/project"
         );
         setProject(projectResponse.data);
       } catch (error) {
@@ -360,7 +364,10 @@ export const HomePage = () => {
     setError("");
     setSuccess("");
     try {
-      await axios.post("http://localhost:5002/contact/post", formData);
+      await axios.post(
+        "https://portfolioserver-7.onrender.com/contact/post",
+        formData
+      );
       setSuccess("Message sent successfully!");
       setFormData({
         name: "",

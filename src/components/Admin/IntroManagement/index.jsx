@@ -87,7 +87,9 @@ export const IntroManagement = () => {
 
   const fetchIntroData = async () => {
     try {
-      const response = await axios.get("http://localhost:5002/intro");
+      const response = await axios.get(
+        "https://portfolioserver-7.onrender.com/intro"
+      );
       if (response.data.length > 0) {
         setIntroData(response.data[0]); // Assuming there's only one intro data
       }
@@ -106,11 +108,14 @@ export const IntroManagement = () => {
     try {
       if (introData._id) {
         await axios.patch(
-          `http://localhost:5002/intro/update/${introData._id}`,
+          `https://portfolioserver-7.onrender.com/intro/update/${introData._id}`,
           introData
         );
       } else {
-        await axios.post("http://localhost:5002/intro/post", introData);
+        await axios.post(
+          "https://portfolioserver-7.onrender.com/intro/post",
+          introData
+        );
       }
       // Refresh data after saving
       fetchIntroData();
@@ -121,7 +126,9 @@ export const IntroManagement = () => {
 
   const handleDeleteClick = async () => {
     try {
-      await axios.delete(`http://localhost:5002/intro/delete/${introData._id}`);
+      await axios.delete(
+        `https://portfolioserver-7.onrender.com/intro/delete/${introData._id}`
+      );
       // Clear data after deleting
       setIntroData({
         welcomeText: "",

@@ -98,7 +98,6 @@ export const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("profile");
-    localStorage.removeItem("userType");
     localStorage.removeItem("User");
     navigate("/login");
     window.location.reload();
